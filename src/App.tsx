@@ -3,6 +3,12 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+  const handleCheckServiceWorker = () => {
+    navigator.serviceWorker
+      .getRegistrations()
+      .then((regs) => regs.forEach((reg) => reg.update()));
+  };
+
   const handleUpdateServiceWorker = () => {
     navigator.serviceWorker
       .getRegistrations()
@@ -34,7 +40,8 @@ function App() {
         >
           Learn React
         </a>
-        <button onClick={handleUpdateServiceWorker}>更新</button>
+        <button onClick={handleCheckServiceWorker}>確認する！</button>
+        <button onClick={handleUpdateServiceWorker}>更新する！</button>
       </header>
     </div>
   );
