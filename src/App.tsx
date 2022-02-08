@@ -3,6 +3,16 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+  const handleUpdateServiceWorker = () => {
+    navigator.serviceWorker.getRegistrations().then((regs) =>
+      regs.forEach((reg) => {
+        if (reg && reg.waiting) {
+          reg.waiting.postMessage({ type: "SKIP_WAITING" });
+        }
+      })
+    );
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +28,9 @@ function App() {
         >
           Learn React
         </a>
+        <input type="button" onClick={handleUpdateServiceWorker}>
+          更新
+        </input>
       </header>
     </div>
   );
