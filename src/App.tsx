@@ -28,9 +28,7 @@ function App() {
         >
           Learn React
         </a>
-        <input type="button" onClick={handleUpdateServiceWorker}>
-          更新
-        </input>
+        <button onClick={handleUpdateServiceWorker}>更新</button>
       </header>
     </div>
   );
